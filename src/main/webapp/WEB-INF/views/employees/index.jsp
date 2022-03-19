@@ -29,12 +29,12 @@
                         <td><c:out value="${employee.name}" /></td>
                         <td>
                             <c:choose>
-                            <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
-                              (削除済み)
-                            </c:when>
-                            <c:otherwise>
-                              <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
-                            </c:otherwise>
+                              <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
+                                (削除済み)
+                              </c:when>
+                              <c:otherwise>
+                                <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
+                              </c:otherwise>
                             </c:choose>
                         </td>
                     </tr>
@@ -50,23 +50,13 @@
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value='action=${actEmp}&command=${commIdx}&page=${i}' />"></a>&nbsp;
+                        <a href="<c:url value='?action=${actEmp}&command=${commIdx}&page=${i}' />"></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='action=${actEmp}&command&=${commNew}' />">新規従業員の登録</a></p>
+        <p><a href="<c:url value='?action=${actEmp}&command=${commNew}' />">新規従業員の登録</a></p>
 
     </c:param>
 </c:import>
 
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>Insert title here</title>
-    </head>
-    <body>
-
-    </body>
-</html>
