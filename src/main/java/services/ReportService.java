@@ -23,7 +23,8 @@ public class ReportService extends ServiceBase {
      * @return 一覧画面に表示するデータのリスト
      */
     public List<ReportView> getMinePerPage(EmployeeView employee, int page) {
-        List<Report> reports = em.createNamedQuery(JpaConst.Q_REP_COUNT_ALL_MINE, Report.class)
+
+        List<Report> reports = em.createNamedQuery(JpaConst.Q_REP_GET_ALL_MINE, Report.class)
                 .setParameter(JpaConst.JPQL_PARM_EMPLOYEE, EmployeeConverter.toModel(employee))
                 .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
                 .setMaxResults(JpaConst.ROW_PER_PAGE)
@@ -38,11 +39,11 @@ public class ReportService extends ServiceBase {
      */
     public long countAllMine(EmployeeView employee) {
 
-        long counnt = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT_ALL_MINE, Long.class)
+        long count = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT_ALL_MINE, Long.class)
                 .setParameter(JpaConst.JPQL_PARM_EMPLOYEE, EmployeeConverter.toModel(employee))
                 .getSingleResult();
 
-        return counnt;
+        return count;
     }
 
     /**
@@ -92,7 +93,7 @@ public class ReportService extends ServiceBase {
             createInternal(rv);
         }
 
-        // バリデーションで発生したエラーを返却 (エラーがなければ0件の空リスト)
+        //バリデーションで発生したエラーを返却（エラーがなければ0件の空リスト）
         return errors;
     }
 
@@ -103,19 +104,19 @@ public class ReportService extends ServiceBase {
      */
     public List<String> update(ReportView rv) {
 
-        // バリデーションを行う
+        //バリデーションを行う
         List<String> errors = ReportValidator.validate(rv);
 
         if (errors.size() == 0) {
 
-            // 更新日時を現在時刻に設定
+            //更新日時を現在時刻に設定
             LocalDateTime ldt = LocalDateTime.now();
             rv.setUpdatedAt(ldt);
 
             updateInternal(rv);
         }
 
-        // バリデーションで発生したエラーを返却 (エラーがなければ0件の空リスト)
+        //バリデーションで発生したエラーを返却（エラーがなければ0件の空リスト）
         return errors;
     }
 
@@ -152,6 +153,5 @@ public class ReportService extends ServiceBase {
         em.getTransaction().commit();
 
     }
-
 
 }

@@ -54,7 +54,7 @@ public class ReportConverter {
      * @return Viewモデルのリスト
      */
     public static List<ReportView> toViewList(List<Report> list) {
-        List<ReportView> evs = new ArrayList<> ();
+        List<ReportView> evs = new ArrayList<>();
 
         for (Report r : list) {
             evs.add(toView(r));
