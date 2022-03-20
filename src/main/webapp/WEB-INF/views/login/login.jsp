@@ -6,7 +6,7 @@
 <c:set var="action" value="${ForwardConst.ACT_AUTH.getValue()}" />
 <c:set var="command" value="${ForwardConst.CMD_LOGIN.getValue()}" />
 
-<c:import url="/WEB-INF/views/layout/app.jsp">
+<c:import url="../layout/app.jsp">
     <c:param name="content">
         <c:if test="${loginError}">
             <div id="flush_error">
