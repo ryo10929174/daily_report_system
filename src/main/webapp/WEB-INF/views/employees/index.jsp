@@ -8,7 +8,7 @@
 <c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue() }" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 
-<c:import url="../layout/app.jsp">
+<c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <c:if test="${flush != null}">
             <div id="flush_success">
